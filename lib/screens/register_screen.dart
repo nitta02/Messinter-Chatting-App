@@ -5,23 +5,25 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:messinter_app/widgets/custom_button.dart';
 import 'package:messinter_app/widgets/textform.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   void Function()? onTap;
-  LoginScreen({
+  RegisterScreen({
     Key? key,
     this.onTap,
   }) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmpasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey.shade300,
       body: Center(
         child: Padding(
@@ -34,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Icons.message,
                 size: 80,
               ),
-              10.heightBox,
+              30.heightBox,
               //text
               const Text(
                 "Messinter",
@@ -43,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              15.heightBox,
+              25.heightBox,
               CustomTextForm(
                 hintText: 'Email',
                 prefixIcon: const Icon(
@@ -62,11 +64,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: passwordController,
                 obscureText: true,
               ),
+
+              15.heightBox,
+              CustomTextForm(
+                hintText: 'Confirm Password',
+                prefixIcon: const Icon(
+                  Icons.lock_open_rounded,
+                ),
+                controller: confirmpasswordController,
+                obscureText: true,
+              ),
               15.heightBox,
 
               //signin button
               CustomButton(
-                text: 'Sign In',
+                text: 'Sign Up',
                 onTap: () {},
               ),
               25.heightBox,
@@ -75,12 +87,12 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Not a Member?'),
+                  const Text('Already a Member?'),
                   5.widthBox,
                   GestureDetector(
                     onTap: widget.onTap,
                     child: const Text(
-                      'Register Now',
+                      'Sign In',
                       style: TextStyle(
                         fontSize: 15.5,
                         fontWeight: FontWeight.bold,
