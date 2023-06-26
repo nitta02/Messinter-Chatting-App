@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
+import 'package:messinter_app/screens/home_screen.dart';
+import 'package:messinter_app/utils/firebase_utils.dart';
+import 'package:provider/provider.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:messinter_app/widgets/custom_button.dart';
@@ -19,6 +22,27 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  //user sign in
+  void signIn() async {
+    final signServices = Provider.of<FirebaseUtils>(context, listen: false);
+    try {
+      await signServices
+          .signInwithEmailandPassword(emailController.text.toString(),
+              passwordController.text.toString())
+          .then((value) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomeScreen(),
+            ));
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
               //signin button
               CustomButton(
                 text: 'Sign In',
-                onTap: () {},
+                onTap: signIn,
               ),
               25.heightBox,
 
