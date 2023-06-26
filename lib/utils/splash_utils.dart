@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:messinter_app/screens/login_screen.dart';
+import 'package:messinter_app/services/auth/loginORregister.dart';
 
 class SplashUtils {
   void splashUtils(BuildContext context) {
@@ -9,7 +9,7 @@ class SplashUtils {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const LoginScreen(),
+            builder: (context) => const LoginORregister(),
           ));
     });
   }

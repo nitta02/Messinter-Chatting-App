@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "962083532493",
+    "project_id": "messinter-16708",
+    "storage_bucket": "messinter-16708.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962083532493:android:bdfb66759ea755b5508384",
+        "android_client_info": {
+          "package_name": "com.example.messinter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962083532493-hntnnphs1p2d7k8tntlreqh1cs7d9ubd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmUoWyTKnYGtEr5-QBsBKu2kFTwAPtqf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962083532493-hntnnphs1p2d7k8tntlreqh1cs7d9ubd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

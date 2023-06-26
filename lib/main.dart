@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'firebase_options.dart';
 import 'package:messinter_app/screens/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 class MyApp extends StatelessWidget {
