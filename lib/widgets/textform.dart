@@ -16,7 +16,7 @@ class CustomTextForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return TextField(
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: prefixIcon,
@@ -28,11 +28,9 @@ class CustomTextForm extends StatelessWidget {
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),
-        
       ),
       controller: controller,
       obscureText: obscureText,
-      
     );
   }
 }
