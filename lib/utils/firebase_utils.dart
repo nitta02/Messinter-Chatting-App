@@ -13,7 +13,7 @@ class FirebaseUtils extends ChangeNotifier {
     try {
       UserCredential userCredential = await FirebaseConstantss.auth
           .signInWithEmailAndPassword(email: email, password: password);
-          
+
       //user documents
       FirebaseConstantss.fireStore
           .collection('users')
@@ -23,9 +23,7 @@ class FirebaseUtils extends ChangeNotifier {
           .set({
         'uid': userCredential.user!.uid,
         'email': email,
-      },SetOptions(
-        merge: true
-      ));
+      }, SetOptions(merge: true));
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw ('Something went wrong');
