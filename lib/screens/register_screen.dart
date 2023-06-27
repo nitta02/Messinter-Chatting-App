@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
+import 'package:messinter_app/screens/home_screen.dart';
+import 'package:messinter_app/utils/firebase_utils.dart';
+import 'package:provider/provider.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:messinter_app/widgets/custom_button.dart';
@@ -20,6 +23,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmpasswordController = TextEditingController();
+
+  //user signUP
+  void userSignUp() async {
+    //userSignUpAuthentication
+    final signUpAuth = Provider.of<FirebaseUtils>(context, listen: false);
+    if (passwordController.text != confirmpasswordController.text) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Password not match')));
+    } else {
+      try {
+        await signUpAuth
+            .signUpwithEmailAndPassword(emailController.text.toString(),
+                passwordController.text.toString())
+            .then((value) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(),
+              ));
+        });
+      } catch (e) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.toString())));
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               //signin button
               CustomButton(
                 text: 'Sign Up',
-                onTap: () {},
+                onTap: userSignUp,
               ),
               25.heightBox,
 
